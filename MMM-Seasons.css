@@ -1,0 +1,122 @@
+/* flake: the path of the movement */
+.MMM-Seasons .flake {
+    position: absolute;
+    top: -50px;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    will-change: transform;
+}
+
+.MMM-Seasons .flake-downwards   {animation-name: seasons-downwards;}
+.MMM-Seasons .flake-upwards     {animation-name: seasons-upwards;}
+.MMM-Seasons .flake-windy       {animation-name: seasons-windy;}
+.MMM-Seasons .flake-around      {animation-name: seasons-around; animation-timing-function: ease-in-out;}
+.MMM-Seasons .flake-long-around {animation-name: seasons-long-around;}
+
+/* sway: sideways movement */
+.MMM-Seasons .flake-sway {
+    animation-name: seasons-sway;
+    animation-iteration-count: infinite;
+}
+
+.MMM-Seasons .flake-long-around .flake-sway,
+.MMM-Seasons .flake-around .flake-sway {
+    animation-name: seasons-sway-small;
+}
+
+/* spin: tumble, rock, flutter or twinkle */
+.MMM-Seasons .flake-spin {
+    animation-iteration-count: infinite;
+}
+
+.MMM-Seasons .flake-windy .flake-spin       {animation-name: seasons-tumble; animation-timing-function: linear;}
+.MMM-Seasons .flake-around .flake-spin      {animation-name: seasons-rock; animation-direction: alternate; animation-timing-function: ease-in-out;}
+.MMM-Seasons .flake-long-around .flake-spin {animation-name: seasons-flutter; animation-direction: alternate;}
+.MMM-Seasons .flake-upwards .flake-spin     {animation-name: seasons-twinkle; animation-direction: alternate;}
+
+/* content: the emoji or image */
+.MMM-Seasons .flake-content {
+    font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    line-height: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@keyframes seasons-downwards {
+    from {transform: translateY(0vh)}
+    to {transform: translateY(calc(100vh + 50px))}
+}
+
+@keyframes seasons-upwards {
+    from {transform: translateY(calc(100vh + 50px))}
+    to {transform: translateY(0vh)}
+}
+
+/* falls diagonally, with gusts of wind */
+@keyframes seasons-windy {
+    0% {transform: translate(0, 0)}
+    25% {transform: translate(calc(var(--wind) * 15vw), 25vh)}
+    40% {transform: translate(calc(var(--wind) * 40vw), 35vh)}
+    60% {transform: translate(calc(var(--wind) * 48vw), 60vh)}
+    75% {transform: translate(calc(var(--wind) * 62vw), 70vh)}
+    100% {transform: translate(calc(var(--wind) * 70vw), calc(100vh + 50px))}
+}
+
+/* wanders around a spot, fading in and out */
+@keyframes seasons-around {
+    0% {transform: translate(0, 0); opacity: 0}
+    10% {opacity: 1}
+    25% {transform: translate(calc(var(--dx) * 8vw), calc(var(--dy) * -6vh))}
+    50% {transform: translate(calc(var(--dx) * 14vw), calc(var(--dy) * 4vh))}
+    75% {transform: translate(calc(var(--dx) * 4vw), calc(var(--dy) * 10vh))}
+    90% {opacity: 1}
+    100% {transform: translate(0, 0); opacity: 0}
+}
+
+/* flies across the mirror along a wavy line */
+@keyframes seasons-long-around {
+    0% {transform: translate(0, 0)}
+    15% {transform: translate(calc(var(--dir) * 18vw), calc(var(--dy) * -10vh))}
+    30% {transform: translate(calc(var(--dir) * 36vw), 0)}
+    45% {transform: translate(calc(var(--dir) * 54vw), calc(var(--dy) * 10vh))}
+    60% {transform: translate(calc(var(--dir) * 70vw), calc(var(--dy) * -4vh))}
+    80% {transform: translate(calc(var(--dir) * 92vw), calc(var(--dy) * -14vh))}
+    100% {transform: translate(calc(var(--dir) * 120vw), 0)}
+}
+
+@keyframes seasons-sway {
+    0% {transform: translateX(0vw)}
+    20% {transform: translateX(calc(var(--sway) * 20vw))}
+    30% {transform: translateX(calc(var(--sway) * 5vw))}
+    50% {transform: translateX(calc(var(--sway) * 25vw))}
+    70% {transform: translateX(0vw)}
+    85% {transform: translateX(calc(var(--sway) * 15vw))}
+    100% {transform: translateX(0vw)}
+}
+
+@keyframes seasons-sway-small {
+    0% {transform: translate(0, 0)}
+    33% {transform: translate(calc(var(--sway) * 3vw), calc(var(--sway) * -2vh))}
+    66% {transform: translate(calc(var(--sway) * -2vw), calc(var(--sway) * 2vh))}
+    100% {transform: translate(0, 0)}
+}
+
+@keyframes seasons-tumble {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+}
+
+@keyframes seasons-rock {
+    from {transform: rotate(-15deg)}
+    to {transform: rotate(15deg)}
+}
+
+@keyframes seasons-flutter {
+    from {transform: scaleX(1)}
+    to {transform: scaleX(0.4)}
+}
+
+@keyframes seasons-twinkle {
+    from {opacity: 1}
+    to {opacity: 0.2}
+}
