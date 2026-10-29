@@ -1,0 +1,44 @@
+.MMM-Seasons .flake-downwards {
+    position: absolute;
+    top: -50px;
+    animation-name: flake-downwards;
+    animation-iteration-count: infinite;
+}
+
+.MMM-Seasons .flake-upwards {
+    position: absolute;
+    top: -50px;
+    animation-name: flake-upwards;
+    animation-iteration-count: infinite;
+}
+
+.MMM-Seasons *[class|="flake"] div {
+    width: 20px;
+    height: 20px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    animation-name: flake-jiggle;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flake-downwards {
+    from {transform: translateY(0vh)}
+    to {transform: translateY(calc(100vh + 20px))}
+}
+
+@keyframes flake-upwards {
+    from {transform: translateY(calc(100vh + 20px))}
+    to {transform: translateY(0vh)}
+}
+
+@keyframes flake-jiggle {
+    0% {transform: translateX(0vw)}
+    20% {transform: translateX(20vw)}
+    30% {transform: translateX(5vw)}
+    50% {transform: translateX(25vw)}
+    70% {transform: translateX(0vw)}
+    85% {transform: translateX(15vw)}
+    100% {transform: translateX(0vw)}
+}
