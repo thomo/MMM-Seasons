@@ -123,7 +123,7 @@ More ideas: 🌧️ light rain in spring, dandelion seeds, 🫧 bubbles or ☀�
 
 Emoji are easy to use but look different on each operating system and browser. Images look the same everywhere. Use PNGs (or SVGs) with a transparent background, about 50x50 pixels.
 
-The folders `images/spring`, `images/summer` and `images/fall` contain 4 placeholder images each (numbered colored dots). Replace them with your own files under the same names, and enable them with `imagesCount`:
+The folders `images/spring`, `images/summer` and `images/fall` contain 4 sample images each: blossoms and a petal, butterflies, sparkles and a firefly, leaves and a chestnut. Enable them with `imagesCount`, or replace them with your own files under the same names and add more:
 
 ````javascript
 config: {
