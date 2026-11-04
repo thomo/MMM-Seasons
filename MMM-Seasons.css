@@ -1,5 +1,5 @@
-/* flake: the path of the movement */
-.MMM-Seasons .flake {
+/* particle: the path of the movement */
+.MMM-Seasons .particle {
     position: absolute;
     top: -50px;
     animation-iteration-count: infinite;
@@ -7,35 +7,35 @@
     will-change: transform;
 }
 
-.MMM-Seasons .flake-downwards   {animation-name: seasons-downwards;}
-.MMM-Seasons .flake-upwards     {animation-name: seasons-upwards;}
-.MMM-Seasons .flake-windy       {animation-name: seasons-windy;}
-.MMM-Seasons .flake-around      {animation-name: seasons-around; animation-timing-function: ease-in-out;}
-.MMM-Seasons .flake-long-around {animation-name: seasons-long-around;}
+.MMM-Seasons .particle-downwards   {animation-name: seasons-downwards;}
+.MMM-Seasons .particle-upwards     {animation-name: seasons-upwards;}
+.MMM-Seasons .particle-windy       {animation-name: seasons-windy;}
+.MMM-Seasons .particle-around      {animation-name: seasons-around; animation-timing-function: ease-in-out;}
+.MMM-Seasons .particle-long-around {animation-name: seasons-long-around;}
 
 /* sway: sideways movement */
-.MMM-Seasons .flake-sway {
+.MMM-Seasons .particle-sway {
     animation-name: seasons-sway;
     animation-iteration-count: infinite;
 }
 
-.MMM-Seasons .flake-long-around .flake-sway,
-.MMM-Seasons .flake-around .flake-sway {
+.MMM-Seasons .particle-long-around .particle-sway,
+.MMM-Seasons .particle-around .particle-sway {
     animation-name: seasons-sway-small;
 }
 
 /* spin: tumble, rock, flutter or twinkle */
-.MMM-Seasons .flake-spin {
+.MMM-Seasons .particle-spin {
     animation-iteration-count: infinite;
 }
 
-.MMM-Seasons .flake-windy .flake-spin       {animation-name: seasons-tumble; animation-timing-function: linear;}
-.MMM-Seasons .flake-around .flake-spin      {animation-name: seasons-rock; animation-direction: alternate; animation-timing-function: ease-in-out;}
-.MMM-Seasons .flake-long-around .flake-spin {animation-name: seasons-flutter; animation-direction: alternate;}
-.MMM-Seasons .flake-upwards .flake-spin     {animation-name: seasons-twinkle; animation-direction: alternate;}
+.MMM-Seasons .particle-windy .particle-spin       {animation-name: seasons-tumble; animation-timing-function: linear;}
+.MMM-Seasons .particle-around .particle-spin      {animation-name: seasons-rock; animation-direction: alternate; animation-timing-function: ease-in-out;}
+.MMM-Seasons .particle-long-around .particle-spin {animation-name: seasons-flutter; animation-direction: alternate;}
+.MMM-Seasons .particle-upwards .particle-spin     {animation-name: seasons-twinkle; animation-direction: alternate;}
 
 /* content: the emoji or image */
-.MMM-Seasons .flake-content {
+.MMM-Seasons .particle-content {
     font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
     line-height: 1;
     background-repeat: no-repeat;

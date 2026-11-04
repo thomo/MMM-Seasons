@@ -53,15 +53,15 @@ modules: [
 |`theme`|`auto` picks the theme from the current date. Set a season (`spring`, `summer`, `fall`, `winter`) or an occasion (e.g. `halloween`) to always show that theme.<br>**Default value:** `auto`|
 |`seasonMode`|How the season is determined: `meteorological` (seasons start on 1 March, 1 June, 1 September, 1 December) or `astronomical` (seasons start at the equinoxes / solstices: about 20 March, 21 June, 22 September, 21 December).<br>**Default value:** `meteorological`|
 |`hemisphere`|`north` or `south`. In the southern hemisphere the seasons are swapped.<br>**Default value:** `north`|
-|`density`|Multiplies the number of flakes of every theme. More flakes are heavier for the CPU and make the mirror harder to read.<br>**Default value:** `1`|
-|`opacity`|Maximum opacity of the flakes (0 to 1). Every flake gets a random opacity below this value.<br>**Default value:** `0.8`|
+|`density`|Multiplies the number of particles of every theme. More particles are heavier for the CPU and make the mirror harder to read.<br>**Default value:** `1`|
+|`opacity`|Maximum opacity of the particles (0 to 1). Every particle gets a random opacity below this value.<br>**Default value:** `0.8`|
 |`updateInterval`|How often (in ms) the module checks whether the season or occasion has changed.<br>**Default value:** `3600000` (one hour)|
 |`seasons`|Changes the settings of a season theme, see [Theme settings](#theme-settings).<br>**Default value:** `{}`|
 |`occasions`|Changes, disables or adds special occasions, see [Special occasions](#special-occasions).<br>**Default value:** `{}`|
 
 ## Themes
 
-|Theme|Flakes|Movement|Flakes on the mirror|
+|Theme|Particles|Movement|Particles on the mirror|
 |---|---|---|---|
 |`spring`|🌸 🌼|`around`|30|
 |`summer`|🦋 (`long around`) and ✨ fireflies (`upwards`)|`long around`|25|
@@ -85,10 +85,10 @@ Each season can be changed using the `seasons` option. Only the settings you spe
 |Setting|Description|
 |---|---|
 |`movement`|One of the movements above.|
-|`flakeCount`|Number of flakes. Set it to `0` to hide the module in that season.|
-|`size`|Maximum flake size in pixels. Every flake gets a random size up to this value.|
+|`particleCount`|Number of particles. Set it to `0` to hide the module in that season.|
+|`size`|Maximum particle size in pixels. Every particle gets a random size up to this value.|
 |`speed`|Speed factor, `2` is twice as fast, `0.5` half as fast.<br>**Default:** `1`|
-|`sway`|How far the flakes sway sideways, `0` is no sway.<br>**Default:** `1`|
+|`sway`|How far the particles sway sideways, `0` is no sway.<br>**Default:** `1`|
 |`opacity`|Opacity factor of this theme, multiplied with the global `opacity`.<br>**Default:** `1`|
 |`emojis`|List of emojis to show. Only used when the theme has no images.|
 |`images`|List of image files to show instead of the emojis.|
@@ -123,7 +123,7 @@ More ideas: 🌧️ light rain in spring, dandelion seeds, 🫧 bubbles or ☀�
 
 Emoji are easy to use but look different on each operating system and browser. Images look the same everywhere. Use PNGs (or SVGs) with a transparent background, about 50x50 pixels.
 
-The folders `images/spring`, `images/summer` and `images/fall` contain 4 placeholder images each (numbered colored dots). Replace them with your own files under the same names, and enable them with `imagesCount`:
+The folders `images/spring`, `images/summer` and `images/fall` contain 4 sample images each: blossoms and a petal, butterflies, sparkles and a firefly, leaves and a chestnut. Enable them with `imagesCount`, or replace them with your own files under the same names and add more:
 
 ````javascript
 config: {
@@ -151,10 +151,10 @@ Relative image paths are resolved against the module folder (`~/MagicMirror/modu
 
 Occasions are themes that are shown between two dates (`from` and `to`, as `"MM-DD"`, both days included) and replace the season theme. If several occasions are active, the one with the shortest date range wins, so a birthday on 12 December beats Christmas.
 
-|Occasion|Dates|Flakes|
+|Occasion|Dates|Particles|
 |---|---|---|
 |`halloween`|24 Oct – 31 Oct|🎃 👻 moving `around`, 🦇 flying `long around`|
-|`christmas`|1 Dec – 26 Dec|🎄 🎁 mixed into the season's flakes (`mixWithSeason`)|
+|`christmas`|1 Dec – 26 Dec|🎄 🎁 mixed into the season's particles (`mixWithSeason`)|
 |`newYear`|31 Dec – 1 Jan|🎆 🎇 ✨ rising `upwards`|
 
 An occasion takes the same settings as a season theme, plus:
@@ -162,9 +162,9 @@ An occasion takes the same settings as a season theme, plus:
 |Setting|Description|
 |---|---|
 |`from`, `to`|First and last day, as `"MM-DD"`. The range may span the end of the year (`"12-31"` to `"01-01"`).|
-|`mixWithSeason`|`true` adds the occasion's flakes to the flakes of the current season, instead of replacing them.<br>**Default:** `false`|
+|`mixWithSeason`|`true` adds the occasion's particles to the particles of the current season, instead of replacing them.<br>**Default:** `false`|
 
-Settings an occasion does not define (e.g. `movement` or `flakeCount`) are taken from the current season.
+Settings an occasion does not define (e.g. `movement` or `particleCount`) are taken from the current season.
 
 ````javascript
 config: {
