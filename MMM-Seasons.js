@@ -4,8 +4,8 @@
  * Based on MMM-Snow by Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  *
- * Comment on terminology: a 'flake' is any moving item being shown on the mirror (a snowflake,
- * a leaf, a butterfly, ...). A 'theme' defines which flakes are shown and how they move. There
+ * Comment on terminology: a 'particle' is any moving item being shown on the mirror (a snowflake,
+ * a leaf, a butterfly, ...). A 'theme' defines which particles are shown and how they move. There
  * is a theme for each season and for each special occasion (e.g. halloween).
  */
 
@@ -15,8 +15,8 @@ Module.register("MMM-Seasons", {
 		theme: "auto",                  // "auto" follows the calendar, or force a season / occasion, e.g. "fall" or "halloween"
 		seasonMode: "meteorological",   // "meteorological" (1st of Mar/Jun/Sep/Dec) or "astronomical" (equinoxes / solstices)
 		hemisphere: "north",            // "north" or "south", the south swaps the seasons
-		density: 1,                     // multiplies the flake count of every theme
-		opacity: 0.8,                   // maximum opacity of the flakes, keeps the mirror readable
+		density: 1,                     // multiplies the particle count of every theme
+		opacity: 0.8,                   // maximum opacity of the particles, keeps the mirror readable
 		updateInterval: 60 * 60 * 1000, // how often to check for a season / occasion change (ms)
 		seasons: {},                    // per season overrides of the themes below
 		occasions: {}                   // overrides of the occasions below, set one to false to disable it, or add your own
@@ -25,8 +25,8 @@ Module.register("MMM-Seasons", {
 	// settings every theme starts from
 	baseTheme: {
 		"movement"      : "downwards",  // downwards, upwards, windy, around or long around
-		"flakeCount"    : 50,           // number of flakes on the mirror
-		"size"          : 24,           // maximum flake size in px
+		"particleCount" : 50,           // number of particles on the mirror
+		"size"          : 24,           // maximum particle size in px
 		"speed"         : 1,            // >1 faster, <1 slower
 		"sway"          : 1,            // amount of sideways sway, 0 = none
 		"opacity"       : 1,            // multiplied with the global opacity
@@ -39,55 +39,55 @@ Module.register("MMM-Seasons", {
 
 	themes: {
 		"spring" : {
-			"movement"   : "around",    // flowers move around
-			"flakeCount" : 30,
-			"size"       : 32,
-			"emojis"     : ["🌸", "🌼"],
-			"imagePrefix": "images/spring/spring"},
+			"movement"      : "around",    // flowers move around
+			"particleCount" : 30,
+			"size"          : 32,
+			"emojis"        : ["🌸", "🌼"],
+			"imagePrefix"   : "images/spring/spring"},
 		"summer" : {
-			"movement"   : "long around", // butterflies fly along long curves
-			"flakeCount" : 25,
-			"size"       : 36,
-			"sway"       : 0.3,
-			"emojis"     : ["🦋", { "emoji": "✨", "movement": "upwards", "size": 16, "weight": 2 }], // fireflies rise
-			"imagePrefix": "images/summer/summer"},
+			"movement"      : "long around", // butterflies fly along long curves
+			"particleCount" : 25,
+			"size"          : 36,
+			"sway"          : 0.3,
+			"emojis"        : ["🦋", { "emoji": "✨", "movement": "upwards", "size": 16, "weight": 2 }], // fireflies rise
+			"imagePrefix"   : "images/summer/summer"},
 		"fall"   : {
-			"movement"   : "windy",     // leaves in the wind
-			"flakeCount" : 40,
-			"size"       : 32,
-			"emojis"     : ["🍂", "🍁", "🍃", { "emoji": "🌰", "weight": 0.15 }],
-			"imagePrefix": "images/fall/fall"},
+			"movement"      : "windy",     // leaves in the wind
+			"particleCount" : 40,
+			"size"          : 32,
+			"emojis"        : ["🍂", "🍁", "🍃", { "emoji": "🌰", "weight": 0.15 }],
+			"imagePrefix"   : "images/fall/fall"},
 		"winter" : {
-			"movement"   : "downwards", // snow goes downwards
-			"flakeCount" : 100,
-			"size"       : 20,
-			"emojis"     : ["❄️"],
-			"imagePrefix": "images/winter/winter",
-			"imagesCount": 3}           // the snow images are used instead of the emoji
+			"movement"      : "downwards", // snow goes downwards
+			"particleCount" : 100,
+			"size"          : 20,
+			"emojis"        : ["❄️"],
+			"imagePrefix"   : "images/winter/winter",
+			"imagesCount"   : 3}           // the snow images are used instead of the emoji
 	},
 
 	// date based themes (from / to as "MM-DD", inclusive), they override the season
 	occasions: {
 		"newYear"   : {
-			"from"       : "12-31",
-			"to"         : "01-01",
-			"movement"   : "upwards",
-			"flakeCount" : 40,
-			"size"       : 28,
-			"emojis"     : ["🎆", "🎇", "✨"]},
+			"from"          : "12-31",
+			"to"            : "01-01",
+			"movement"      : "upwards",
+			"particleCount" : 40,
+			"size"          : 28,
+			"emojis"        : ["🎆", "🎇", "✨"]},
 		"christmas" : {
-			"from"       : "12-01",
-			"to"         : "12-26",
-			"mixWithSeason": true,      // add the emojis to the flakes of the season
-			"size"       : 28,
-			"emojis"     : [{ "emoji": "🎄", "weight": 0.1 }, { "emoji": "🎁", "weight": 0.1 }]},
+			"from"          : "12-01",
+			"to"            : "12-26",
+			"mixWithSeason" : true,        // add the emojis to the particles of the season
+			"size"          : 28,
+			"emojis"        : [{ "emoji": "🎄", "weight": 0.1 }, { "emoji": "🎁", "weight": 0.1 }]},
 		"halloween" : {
-			"from"       : "10-24",
-			"to"         : "10-31",
-			"movement"   : "around",
-			"flakeCount" : 20,
-			"size"       : 36,
-			"emojis"     : ["🎃", "👻", { "emoji": "🦇", "movement": "long around" }]}
+			"from"          : "10-24",
+			"to"            : "10-31",
+			"movement"      : "around",
+			"particleCount" : 20,
+			"size"          : 36,
+			"emojis"        : ["🎃", "👻", { "emoji": "🦇", "movement": "long around" }]}
 	},
 
 	movements: ["downwards", "upwards", "windy", "around", "long-around"],
@@ -183,7 +183,7 @@ Module.register("MMM-Seasons", {
 		return Object.assign({}, this.baseTheme, this.themes[season], this.config.seasons[season] || {});
 	},
 
-	// returns the theme settings and the list of flake items to choose from
+	// returns the theme settings and the list of particle items to choose from
 	getTheme: function(name) {
 		if (this.themes[name]) {
 			var settings = this.getSeasonSettings(name);
@@ -274,88 +274,88 @@ Module.register("MMM-Seasons", {
 			return wrapper;
 		}
 
-		var count = Math.round(theme.settings.flakeCount * this.config.density);
+		var count = Math.round(theme.settings.particleCount * this.config.density);
 		for (var i = 0; i < count; i++) {
-			wrapper.appendChild(this.createFlake(this.pickItem(items)));
+			wrapper.appendChild(this.createParticle(this.pickItem(items)));
 		}
 		return wrapper;
 	},
 
-	/* A flake consists of four nested elements, each with its own animation:
-	 *   flake   - moves along the path of the movement (falling, rising, around, ...)
-	 *   sway    - sways sideways
-	 *   spin    - tumbles, rocks, flutters or twinkles, depending on the movement
-	 *   content - the emoji or image, scaled and faded randomly
+	/* A particle consists of four nested elements, each with its own animation:
+	 *   particle - moves along the path of the movement (falling, rising, around, ...)
+	 *   sway     - sways sideways
+	 *   spin     - tumbles, rocks, flutters or twinkles, depending on the movement
+	 *   content  - the emoji or image, scaled and faded randomly
 	 */
-	createFlake: function(item) {
+	createParticle: function(item) {
 		var random = Math.random;
-		var flake = document.createElement("div");
+		var particle = document.createElement("div");
 		var sway = document.createElement("div");
 		var spin = document.createElement("div");
 		var content = document.createElement("div");
 
-		flake.className = "flake flake-" + item.movement;
-		sway.className = "flake-sway";
-		spin.className = "flake-spin";
-		content.className = "flake-content";
-		flake.style.setProperty("--sway", item.sway);
+		particle.className = "particle particle-" + item.movement;
+		sway.className = "particle-sway";
+		spin.className = "particle-spin";
+		content.className = "particle-content";
+		particle.style.setProperty("--sway", item.sway);
 
 		var duration;
 		switch (item.movement) {
 			case "windy":
-				flake.style.left = ((random() * 150) - 60) + "vw";
-				flake.style.setProperty("--wind", 0.6 + random() * 0.8);
+				particle.style.left = ((random() * 150) - 60) + "vw";
+				particle.style.setProperty("--wind", 0.6 + random() * 0.8);
 				duration = 15 + random() * 15;
 				spin.style.animationDuration = (3 + random() * 5) + "s";
 				spin.style.animationDirection = random() < 0.5 ? "normal" : "reverse";
 				break;
 			case "around":
-				this.placeRandomly(flake);
-				flake.style.setProperty("--dx", random() * 2 - 1);
-				flake.style.setProperty("--dy", random() * 2 - 1);
+				this.placeRandomly(particle);
+				particle.style.setProperty("--dx", random() * 2 - 1);
+				particle.style.setProperty("--dy", random() * 2 - 1);
 				duration = 20 + random() * 20;
 				spin.style.animationDuration = (4 + random() * 4) + "s";
 				break;
 			case "long-around":
 				var direction = random() < 0.5 ? 1 : -1;
-				flake.style.left = direction > 0 ? "-10vw" : "105vw";
-				flake.style.top = (5 + random() * 80) + "vh";
-				flake.style.setProperty("--dir", direction);
-				flake.style.setProperty("--dy", 0.5 + random());
+				particle.style.left = direction > 0 ? "-10vw" : "105vw";
+				particle.style.top = (5 + random() * 80) + "vh";
+				particle.style.setProperty("--dir", direction);
+				particle.style.setProperty("--dy", 0.5 + random());
 				duration = 25 + random() * 20;
 				spin.style.animationDuration = (0.25 + random() * 0.2) + "s";
 				break;
 			case "upwards":
-				flake.style.left = ((random() * 100) - 10) + "vw";
+				particle.style.left = ((random() * 100) - 10) + "vw";
 				duration = 50 + random() * 50;
 				spin.style.animationDuration = (2 + random() * 3) + "s";
 				break;
 			default: // downwards
-				flake.style.left = ((random() * 100) - 10) + "vw";
+				particle.style.left = ((random() * 100) - 10) + "vw";
 				duration = 50 + random() * 50;
 		}
 
 		duration = duration / item.speed;
-		flake.style.animationDuration = duration + "s";
-		// negative delays start the flakes somewhere along their path, so the mirror is filled at once
-		flake.style.animationDelay = -(random() * duration) + "s";
+		particle.style.animationDuration = duration + "s";
+		// negative delays start the particles somewhere along their path, so the mirror is filled at once
+		particle.style.animationDelay = -(random() * duration) + "s";
 		spin.style.animationDelay = -(random() * 5) + "s";
 
 		var swayDuration = (30 + random() * 30) / item.speed;
 		sway.style.animationDuration = swayDuration + "s";
 		sway.style.animationDelay = -(random() * swayDuration) + "s";
 
-		// flakes moving around get a new place on every round
+		// particles moving around get a new place on every round
 		if (item.movement === "around" || item.movement === "long-around") {
 			var self = this;
-			flake.addEventListener("animationiteration", function(event) {
-				if (event.target !== flake) {
+			particle.addEventListener("animationiteration", function(event) {
+				if (event.target !== particle) {
 					return;
 				}
 				if (item.movement === "around") {
-					self.placeRandomly(flake);
+					self.placeRandomly(particle);
 				} else {
-					flake.style.top = (5 + random() * 80) + "vh";
+					particle.style.top = (5 + random() * 80) + "vh";
 				}
 			});
 		}
@@ -373,13 +373,13 @@ Module.register("MMM-Seasons", {
 
 		spin.appendChild(content);
 		sway.appendChild(spin);
-		flake.appendChild(sway);
-		return flake;
+		particle.appendChild(sway);
+		return particle;
 	},
 
-	placeRandomly: function(flake) {
-		flake.style.left = (Math.random() * 90) + "vw";
-		flake.style.top = (Math.random() * 85) + "vh";
+	placeRandomly: function(particle) {
+		particle.style.left = (Math.random() * 90) + "vw";
+		particle.style.top = (Math.random() * 85) + "vh";
 	}
 
 });
