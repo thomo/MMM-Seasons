@@ -176,6 +176,10 @@ config: {
 }
 ````
 
+## Changelog
+
+All notable changes to this project will be documented in the [CHANGELOG.md](CHANGELOG.md) file.
+
 ## Support
 
 Like this module? Keep me awake and coding — buy me a coffee ☕️.

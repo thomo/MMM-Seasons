@@ -1,0 +1,17 @@
+{
+  "name": "mmm-seasons",
+  "version": "1.0.0",
+  "description": "MMM-Seasons is a module for MagicMirror² that lets things drift across your mirror, themed by the current season and special occasions.",
+  "main": "MMM-Seasons.js",
+  "author": "Thomas Mohaupt",
+  "license": "MIT",
+  "keywords": [
+    "magic mirror",
+    "module",
+    "seasons"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomo/MMM-Seasons"
+  }
+}
